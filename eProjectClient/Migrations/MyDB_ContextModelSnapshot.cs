@@ -46,14 +46,11 @@ namespace eProjectClient.Migrations
                     b.Property<string>("Address")
                         .HasColumnName("address");
 
-                    b.Property<int>("CountRrror")
-                        .HasColumnName("counterror");
-
                     b.Property<DateTime?>("DateTime")
                         .HasColumnName("birtday");
 
                     b.Property<bool>("Decentralization")
-                        .HasColumnName("decentralization ");
+                        .HasColumnName("decentralization");
 
                     b.Property<string>("Email")
                         .HasColumnName("email");
@@ -61,9 +58,6 @@ namespace eProjectClient.Migrations
                     b.Property<string>("FullName")
                         .HasColumnName("fullName")
                         .HasMaxLength(50);
-
-                    b.Property<bool>("Islock")
-                        .HasColumnName("islock");
 
                     b.Property<string>("Password")
                         .HasColumnName("password");
@@ -73,12 +67,6 @@ namespace eProjectClient.Migrations
 
                     b.Property<int>("State")
                         .HasColumnName("state");
-
-                    b.Property<DateTime?>("TimeLock")
-                        .HasColumnName("timelock");
-
-                    b.Property<string>("TokenChangePassword")
-                        .HasColumnName("token_change_password");
 
                     b.Property<string>("UserName")
                         .HasColumnName("userName")
@@ -125,130 +113,6 @@ namespace eProjectClient.Migrations
                     b.ToTable("certify");
                 });
 
-            modelBuilder.Entity("Data.DataModel.Comment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("id");
-
-                    b.Property<Guid>("Account_Id")
-                        .HasColumnName("account_id");
-
-                    b.Property<string>("ContentComment")
-                        .HasColumnName("content_comment");
-
-                    b.Property<Guid>("DimMsId")
-                        .HasColumnName("dimId");
-
-                    b.Property<int>("Feedback")
-                        .HasColumnName("feedback");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnName("productId");
-
-                    b.Property<Guid>("StoneMstId")
-                        .HasColumnName("stoneId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Account_Id");
-
-                    b.HasIndex("DimMsId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("StoneMstId");
-
-                    b.ToTable("comment");
-                });
-
-            modelBuilder.Entity("Data.DataModel.DimMst", b =>
-                {
-                    b.Property<Guid>("DimMsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("dimId");
-
-                    b.Property<Guid>("Category_id")
-                        .HasColumnName("category_id");
-
-                    b.Property<Guid>("CertifyId")
-                        .HasColumnName("certify_id");
-
-                    b.Property<string>("Detail")
-                        .HasColumnName("detail");
-
-                    b.Property<float>("DimAmt")
-                        .HasColumnName("dim_amt");
-
-                    b.Property<float>("DimCrt")
-                        .HasColumnName("dim_crt");
-
-                    b.Property<float>("DimGm")
-                        .HasColumnName("dim_gm");
-
-                    b.Property<string>("DimMstName")
-                        .HasColumnName("dimmst_name")
-                        .HasMaxLength(150);
-
-                    b.Property<float>("DimPcs")
-                        .HasColumnName("dim_pcs");
-
-                    b.Property<Guid>("DimQlty_Id")
-                        .HasColumnName("dimqlty_id");
-
-                    b.Property<int>("DimSize")
-                        .HasColumnName("dim_size");
-
-                    b.Property<Guid>("Dimsubtype_Id")
-                        .HasColumnName("dimsubtype_id");
-
-                    b.Property<string>("Image")
-                        .HasColumnName("image");
-
-                    b.Property<string>("Style_Code")
-                        .HasColumnName("style_code");
-
-                    b.HasKey("DimMsId");
-
-                    b.HasIndex("Category_id");
-
-                    b.HasIndex("CertifyId");
-
-                    b.HasIndex("DimQlty_Id");
-
-                    b.HasIndex("Dimsubtype_Id");
-
-                    b.ToTable("dimmst");
-                });
-
-            modelBuilder.Entity("Data.DataModel.DimQltyMst", b =>
-                {
-                    b.Property<Guid>("DimqltyId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("dimqlty_id");
-
-                    b.Property<int>("DimQlty")
-                        .HasColumnName("dim_qlty");
-
-                    b.HasKey("DimqltyId");
-
-                    b.ToTable("dimqlty_mst");
-                });
-
-            modelBuilder.Entity("Data.DataModel.DimQltySubMst", b =>
-                {
-                    b.Property<Guid>("DimSub_TypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("dimsub_type_id");
-
-                    b.Property<int>("DimQlty")
-                        .HasColumnName("dimqlty");
-
-                    b.HasKey("DimSub_TypeId");
-
-                    b.ToTable("dimqlty_submst");
-                });
-
             modelBuilder.Entity("Data.DataModel.Goldk", b =>
                 {
                     b.Property<Guid>("GoldTypeId")
@@ -266,35 +130,6 @@ namespace eProjectClient.Migrations
                     b.ToTable("goldk");
                 });
 
-            modelBuilder.Entity("Data.DataModel.ImageProduct", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("id");
-
-                    b.Property<Guid>("DimMsId")
-                        .HasColumnName("dimId");
-
-                    b.Property<string>("Image")
-                        .HasColumnName("image");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnName("productId");
-
-                    b.Property<Guid>("StoneMstId")
-                        .HasColumnName("stoneId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DimMsId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("StoneMstId");
-
-                    b.ToTable("image_product");
-                });
-
             modelBuilder.Entity("Data.DataModel.ItemProduct", b =>
                 {
                     b.Property<Guid>("ProductId")
@@ -309,6 +144,9 @@ namespace eProjectClient.Migrations
 
                     b.Property<Guid>("CertifyId")
                         .HasColumnName("certify_id");
+
+                    b.Property<DateTime>("CreartTime")
+                        .HasColumnName("time");
 
                     b.Property<string>("Detail")
                         .HasColumnName("detail");
@@ -354,6 +192,9 @@ namespace eProjectClient.Migrations
 
                     b.Property<int>("Quantity")
                         .HasColumnName("quantity");
+
+                    b.Property<float>("Sale")
+                        .HasColumnName("sale");
 
                     b.Property<float?>("Stone_Making")
                         .HasColumnName("stone_making");
@@ -456,138 +297,6 @@ namespace eProjectClient.Migrations
                     b.ToTable("OrderDetail");
                 });
 
-            modelBuilder.Entity("Data.DataModel.StoneMst", b =>
-                {
-                    b.Property<Guid>("StoneMstId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("stoneId");
-
-                    b.Property<Guid>("Category_id")
-                        .HasColumnName("category_id");
-
-                    b.Property<Guid>("CertifyId")
-                        .HasColumnName("certify_id");
-
-                    b.Property<string>("Detail")
-                        .HasColumnName("detail");
-
-                    b.Property<string>("Image")
-                        .HasColumnName("image");
-
-                    b.Property<float>("MyProperty")
-                        .HasColumnName("stone_crt");
-
-                    b.Property<string>("StoneName")
-                        .HasColumnName("stone_name")
-                        .HasMaxLength(150);
-
-                    b.Property<Guid>("StoneQltyId")
-                        .HasColumnName("stoneqlty_id");
-
-                    b.Property<float>("Stone_Amt")
-                        .HasColumnName("stone_amt");
-
-                    b.Property<float>("Stone_DM")
-                        .HasColumnName("stone_gm");
-
-                    b.Property<float>("Stone_PCS")
-                        .HasColumnName("stone_pcs");
-
-                    b.Property<float>("Stone_Rate")
-                        .HasColumnName("stone_rate");
-
-                    b.Property<string>("StyleCode")
-                        .HasColumnName("style_code");
-
-                    b.HasKey("StoneMstId");
-
-                    b.HasIndex("Category_id");
-
-                    b.HasIndex("CertifyId");
-
-                    b.HasIndex("StoneQltyId");
-
-                    b.ToTable("stone_mst");
-                });
-
-            modelBuilder.Entity("Data.DataModel.StoneQltyMst", b =>
-                {
-                    b.Property<Guid>("StoneQltyId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("stoneqlty_id");
-
-                    b.Property<int>("StoneQlty")
-                        .HasColumnName("stoneqlty");
-
-                    b.HasKey("StoneQltyId");
-
-                    b.ToTable("stone");
-                });
-
-            modelBuilder.Entity("Data.DataModel.Comment", b =>
-                {
-                    b.HasOne("Data.DataModel.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("Account_Id")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Data.DataModel.DimMst", "DimMst")
-                        .WithMany()
-                        .HasForeignKey("DimMsId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Data.DataModel.ItemProduct", "ItemProduct")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Data.DataModel.StoneMst", "StoneMst")
-                        .WithMany()
-                        .HasForeignKey("StoneMstId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Data.DataModel.DimMst", b =>
-                {
-                    b.HasOne("Data.DataModel.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("Category_id")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Data.DataModel.Certify", "Certify")
-                        .WithMany()
-                        .HasForeignKey("CertifyId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Data.DataModel.DimQltyMst", "DimQltyMst")
-                        .WithMany()
-                        .HasForeignKey("DimQlty_Id")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Data.DataModel.DimQltySubMst", "DimQltySubMst")
-                        .WithMany()
-                        .HasForeignKey("Dimsubtype_Id")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Data.DataModel.ImageProduct", b =>
-                {
-                    b.HasOne("Data.DataModel.DimMst", "DimMst")
-                        .WithMany()
-                        .HasForeignKey("DimMsId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Data.DataModel.ItemProduct", "ItemProduct")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Data.DataModel.StoneMst", "StoneMst")
-                        .WithMany()
-                        .HasForeignKey("StoneMstId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Data.DataModel.ItemProduct", b =>
                 {
                     b.HasOne("Data.Brand", "Brand")
@@ -619,24 +328,6 @@ namespace eProjectClient.Migrations
                     b.HasOne("Data.DataModel.Order", "Order")
                         .WithMany()
                         .HasForeignKey("Order_Id")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Data.DataModel.StoneMst", b =>
-                {
-                    b.HasOne("Data.DataModel.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("Category_id")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Data.DataModel.Certify", "Certify")
-                        .WithMany()
-                        .HasForeignKey("CertifyId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Data.DataModel.StoneQltyMst", "StoneQltyMst")
-                        .WithMany()
-                        .HasForeignKey("StoneQltyId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

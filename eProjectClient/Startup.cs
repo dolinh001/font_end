@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace eProjectClient
 {
@@ -31,6 +32,33 @@ namespace eProjectClient
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(ops =>
+            {
+                ops.IdleTimeout = TimeSpan.FromHours(1);
+                ops.Cookie.Name = ".Eproject.Session";
+                ops.Cookie.HttpOnly = true;
+                ops.Cookie.IsEssential = true;
+            });
+
+            services.AddAuthentication("EProject").AddCookie("EProject", options =>
+            {
+                // options.AccessDeniedPath = "/Admin/Members/ManagmentAccount";
+                options.Cookie = new CookieBuilder
+                {
+                    HttpOnly = true,
+                    Name = "Eproject.Security.Cookie",
+                    Path = "/",
+                    SameSite = SameSiteMode.Lax,
+                    SecurePolicy = CookieSecurePolicy.SameAsRequest
+                };
+                options.LoginPath = new PathString("/Admin/Account/Index");
+                options.ReturnUrlParameter = "redirect";
+                options.SlidingExpiration = true;
             });
 
             // cấu hình kết nối đến cơ sở dữ liệu 
@@ -55,10 +83,11 @@ namespace eProjectClient
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

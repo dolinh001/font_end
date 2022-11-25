@@ -29,6 +29,12 @@ namespace Data.DataModel
         [Column("image_product")]
         public string ImageProduct { get; set; }
 
+        [Column("sale")]
+        public float Sale { get; set; }
+
+        [Column("time")]
+        public DateTime CreartTime { get; set; }
+
         /// <summary>
         /// chất lượng sản phẩm 
         /// </summary>
@@ -85,7 +91,7 @@ namespace Data.DataModel
 
 
         /// <summary>
-        /// các khoản phí khách
+        /// các khoản phí khác
         /// </summary>
         [Column("other_making")]
         public float Other_Making { get; set; }

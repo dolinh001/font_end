@@ -22,6 +22,13 @@ namespace eProjectClient.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetAllList()
+        {
+            var dataList = _context.Brand.OrderByDescending(x => x.BrandName).ToList();
+            return Json(new { data = dataList });
+        }
+
+        [HttpGet]
         public IActionResult getList(string brandName, int page, bool status)
         {
             int pageSize = 5;

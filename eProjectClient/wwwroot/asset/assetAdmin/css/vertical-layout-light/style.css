@@ -15136,14 +15136,16 @@ a.close.disabled {
 @media (min-width: 992px) {
   .modal-lg,
   .modal-xl {
-    max-width: 90%;
+    min-width: 50%;
+    max-width: 50%;
   }
 }
 
 @media (min-width: 1200px) {
-  .modal-xl {
-    max-width: 1140px;
-  }
+    .modal-xl {
+        min-width: 70%;
+        max-width: 70%;
+    }
 }
 
 .tooltip {

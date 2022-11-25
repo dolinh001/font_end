@@ -27,7 +27,7 @@ namespace Data.DataModel
         [Column("state")]
         public int State { get; set; }
 
-        [Column("decentralization ")]
+        [Column("decentralization")]
         public bool Decentralization { get; set; }
 
         [Column("phone")]
@@ -41,17 +41,5 @@ namespace Data.DataModel
 
         [Column("password")]
         public string Password { get; set; }
-
-        [Column("counterror")]
-        public int CountRrror { get; set; }
-
-        [Column("islock")]
-        public bool Islock { get; set; }
-
-        [Column("timelock")]
-        public DateTime? TimeLock { get; set; }
-
-        [Column("token_change_password")]
-        public string TokenChangePassword { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Data;
 using Data.DataModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 namespace eProjectClient.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    //[Authorize]
     public class CategoryController : Controller
     {
         private readonly MyDB_Context _context;
@@ -23,6 +25,13 @@ namespace eProjectClient.Areas.Admin.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult GetAllList()
+        {
+            var dataList = _context.Category.OrderByDescending(x => x.CategoryName).ToList();
+            return Json(new { data = dataList});
         }
 
         [HttpGet]

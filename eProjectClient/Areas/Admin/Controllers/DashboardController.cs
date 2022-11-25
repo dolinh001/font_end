@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Data;
@@ -18,6 +19,18 @@ namespace eProjectClient.Areas.Admin.Controllers
         public DashboardController(MyDB_Context context)
         {
             _context = context;
+        }
+
+        public async Task<IActionResult> Upload(IFormFile files)
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\public\\images", files.FileName);
+
+            using (var stream = System.IO.File.Create(path))
+            {
+                await files.CopyToAsync(stream);
+            }
+
+            return Ok(new { data = files.FileName });
         }
 
         public ActionResult Index()

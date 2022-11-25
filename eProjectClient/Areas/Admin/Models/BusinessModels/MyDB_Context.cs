@@ -15,17 +15,10 @@ namespace Data
         public DbSet<Brand> Brand { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Certify> Certify { get; set; }
-        public DbSet<Comment> Comment { get; set; }
-        public DbSet<DimMst> DimMst { get; set; }
-        public DbSet<DimQltyMst> DimQltyMst { get; set; }
-        public DbSet<DimQltySubMst> DimQltySubMst { get; set; }
         public DbSet<Goldk> Goldk { get; set; }
-        public DbSet<ImageProduct> ImageProduct { get; set; }
         public DbSet<ItemProduct> ItemProduct { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderDetail> OrderDetail { get; set; }
-        public DbSet<StoneMst> StoneMst { get; set; }
-        public DbSet<StoneQltyMst> StoneQltyMst { get; set; }
 
         #endregion
     }
